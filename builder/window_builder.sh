@@ -10,6 +10,7 @@ build_window_format() {
   local text="$4"
   local fill="$5"
   local window_type="$6"
+  local number_color="$7"
 
   # NOTE: For backwards compatibility remove before 1.0.0 and update default for
   # `@catppuccin_window_status`
@@ -52,7 +53,7 @@ build_window_format() {
   fi
 
   if [ "$fill" = "none" ]; then
-    local show_number="#[fg=$thm_fg,bg=$thm_gray]$number"
+    local show_number="#[fg=$number_color,bg=$thm_gray]$number"
     local show_middle_separator="#[fg=$thm_fg,bg=$thm_gray,nobold,nounderscore,noitalics]$window_middle_separator"
     local show_text="#[fg=$thm_fg,bg=$thm_gray]$text"
 
@@ -69,7 +70,7 @@ build_window_format() {
   fi
 
   if [ "$fill" = "all" ]; then
-    local show_number="#[fg=$background,bg=$color]$number"
+    local show_number="#[fg=$number_color,bg=$color]$number"
     local show_middle_separator="#[fg=$background,bg=$color,nobold,nounderscore,noitalics]$window_middle_separator"
     local show_text="#[fg=$background,bg=$color]$text"
 
@@ -86,7 +87,7 @@ build_window_format() {
   fi
 
   if [ "$fill" = "number" ]; then
-    local show_number="#[fg=$background,bg=$color]$number"
+    local show_number="#[fg=$number_color,bg=$color]$number"
     local show_middle_separator="#[fg=$color,bg=$background,nobold,nounderscore,noitalics]$window_middle_separator"
     local show_text="#[fg=$thm_fg,bg=$background]$text"
 

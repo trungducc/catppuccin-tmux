@@ -9,6 +9,7 @@ show_window_default_format() {
   add_tmux_batch_option "@catppuccin_window_default_background"
   add_tmux_batch_option "@catppuccin_window_default_text"
   add_tmux_batch_option "@catppuccin_window_default_fill"
+  add_tmux_batch_option "@catppuccin_window_default_number_color"
 
   run_tmux_batch_commands
 
@@ -17,8 +18,9 @@ show_window_default_format() {
   background=$(get_tmux_batch_option "@catppuccin_window_default_background" "$thm_gray")
   text="$(get_tmux_batch_option "@catppuccin_window_default_text" "#{b:pane_current_path}")" # use #W for application instead of directory
   fill="$(get_tmux_batch_option "@catppuccin_window_default_fill" "number")"                 # number, all, none
+  number_color="$(get_tmux_batch_option "@catppuccin_window_default_number_color" "$background")"
 
-  default_window_format=$(build_window_format "$number" "$color" "$background" "$text" "$fill" "default")
+  default_window_format=$(build_window_format "$number" "$color" "$background" "$text" "$fill" "default" "$number_color")
 
   echo "$default_window_format"
 }
